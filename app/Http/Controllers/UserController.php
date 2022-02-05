@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    
+
     public function showLogin()
     {
         return view('showLogin');
@@ -51,7 +51,7 @@ class UserController extends Controller
                 ->route('myPage')->with(['login' => 'ログイン成功']);
         }
 
-        return back()->withErrors([
+        return back()->with([
             'login_error' => 'メールアドレスまたはパスワードが間違っています',
         ]);
 
@@ -61,6 +61,23 @@ class UserController extends Controller
     {
         return view('myPage');
     }
+
+    /**
+ * ユーザーをアプリケーションからログアウトさせる
+ *
+ * @param  \Illuminate\Http\Request  $request
+ * @return \Illuminate\Http\Response
+ */
+public function logout(Request $request)
+{
+    Auth::logout();
+
+    $request->session()->invalidate();
+
+    $request->session()->regenerateToken();
+
+    return redirect('/');
+}
 
 
 }

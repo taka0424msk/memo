@@ -22,17 +22,20 @@ Route::group(['middleware' => ['guest']], function () {
     Route::get('/create', [UserController::class, 'create'])
         ->name('create');
 
+    Route::post('/register', [UserController::class, 'register'])
+        ->name('register');
+
+    Route::post('/login', [UserController::class, 'login'])
+        ->name('login');
     });
 
-Route::post('/register', [UserController::class, 'register'])
-    ->name('register');
-
-Route::post('/login', [UserController::class, 'login'])
-    ->name('login');
 
 Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/home', [UserController::class, 'myPage'])
         ->name('myPage');
-});
+
+    Route::post('/logout', [UserController::class, 'logout'])
+        ->name('logout');
+    });
 
