@@ -7,7 +7,7 @@
         <form action="{{ route('login') }}" method="POST">
             @csrf
             @if (session('login_error'))
-                {{ session('login_error') }}
+                <div class="error">{{ session('login_error') }}</div>
             @endif
             <div><input class="input" type="text" placeholder="メールアドレス" name="email"></div>
             @error('email')
