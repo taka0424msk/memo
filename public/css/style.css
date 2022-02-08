@@ -49,7 +49,22 @@ h2 {
     margin-bottom: 10px;
 }
 
+.textarea {
+    resize: none;
+    width: 300px;
+    height: 100px;
+    opacity: 0.5;
+    padding: 16px;
+    border: 1px solid rgba(5, 5, 5, 0.2);
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
 input:focus {
+    outline: none;
+}
+
+textarea:focus {
     outline: none;
 }
 
@@ -102,7 +117,7 @@ select {
 .gender {
     display: flex;
     justify-content: space-evenly;
-    margin: 8px 24px 8px 32px;
+    margin: 8px 24px 16px 32px;
 }
 
 .gender > div {
@@ -122,6 +137,11 @@ select {
     font-size: 12px;
 }
 
+.success {
+    color: skyblue;
+    font-size: 12px;
+}
+
 .login {
     display: inline-block;
     text-decoration: none;
@@ -133,6 +153,22 @@ select {
     /* margin-left: 50px; */
     color: rgb(39, 42, 43);
     opacity: .5;
+}
+
+.myPage_list {
+    text-align: left;
+    margin-left: 54px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.myPage_list li {
+    margin-top: 8px;
+}
+
+.myPage_list a {
+    text-decoration: none;
+    color: rgba(5, 5, 5, 0.5);
 }
 
 .myPage_btn {
@@ -151,6 +187,110 @@ select {
     opacity: .5;
 }
 
-/* .gender-input {
-    display: none;
-} */
+.postPage {
+    color: rgba(5, 5, 5, 0.5);
+    margin-bottom: 0px;
+    text-align: left;
+    margin-left: 35px;
+}
+
+.edit {
+    text-align: right;
+    margin-right: 16px;
+    margin-top: 16px;
+}
+
+.edit a{
+    text-decoration: none;
+    color: rgba(5, 5, 5, 0.5);
+    border: 1px solid rgba(5, 5, 5, 0.3);
+    padding: 4px 8px;
+    border-radius: 25%;
+}
+
+.post_body {
+    width: 300px;
+    table-layout: fixed;
+    word-wrap: break-word;
+    color: rgba(5, 5, 5, 0.5);
+    text-align: left;
+    margin: 16px auto;
+
+}
+
+.post_title {
+    text-align: left;
+    margin-left: 40px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.flex1 {
+    text-align: left;
+    margin: 16px 0 0 16px;
+}
+
+.flex2 {
+    text-align: center;
+    margin: 16px;
+}
+
+.flex2 a {
+    text-decoration: none;
+    color: rgba(5, 5, 5, 0.5);
+    border: 1px solid rgba(5, 5, 5, 0.3);
+    padding: 4px 8px;
+    border-radius: 25%;
+}
+
+.flex2 a:hover {
+    background-color: skyblue;
+}
+
+.back {
+    margin-bottom: 16px;
+}
+
+.back a{
+    color: rgba(5, 5, 5, 0.8);
+}
+
+.delete_btn {
+    cursor: pointer;
+    color: rgba(5, 5, 5, 0.5);
+    padding: 4px 16px;
+    border: 2px solid tomato;
+    border-radius: 10px;
+    background-color: #fff;
+    margin-bottom: 16px;
+    margin-top: 32px;
+    color: tomato;
+}
+
+.delete_btn:hover {
+    opacity: .5;
+}
+
+.back {
+    text-align: center;
+    margin: 16px;
+}
+
+.back a {
+    text-decoration: none;
+}
+
+.posts_box {
+    width: 350px;
+    margin: 0 auto 16px;
+    border: 1px solid rgba(5, 5, 5, 0.3);
+    text-align: left;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.posts {
+    margin: 16px;
+}

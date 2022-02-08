@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,5 +38,26 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('/logout', [UserController::class, 'logout'])
         ->name('logout');
+
+    Route::get('/post', [PostController::class, 'post'])
+        ->name('posts.post');
+
+    Route::get('/post/showCreate', [PostController::class, 'showCreate'])
+        ->name('posts.showCreate');
+
+    Route::post('/post/create', [PostController::class, 'create'])
+        ->name('posts.create');
+
+    Route::get('/post/{post}', [PostController::class, 'showPost'])
+        ->name('posts.showPost');
+
+    Route::get('/post/{post}/showEdit', [PostController::class, 'showEdit'])
+        ->name('posts.showEdit');
+
+    Route::patch('/post/{post}/edit', [PostController::class, 'edit'])
+        ->name('posts.edit');
+
+    Route::delete('/post/{post}/destroy', [PostController::class, 'destroy'])
+        ->name('posts.destroy');
     });
 
