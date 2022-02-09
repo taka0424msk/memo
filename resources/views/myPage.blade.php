@@ -11,7 +11,7 @@
         <div class="myPage_list">
             <ul>
                 <li><a href="{{ route('posts.post') }}">投稿一覧</a></li>
-                <li><a href="#">検索</a></li>
+                <li><a href="{{ route('showSearch') }}">検索</a></li>
             </ul>
         </div>
 

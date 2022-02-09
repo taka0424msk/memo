@@ -59,5 +59,11 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::delete('/post/{post}/destroy', [PostController::class, 'destroy'])
         ->name('posts.destroy');
+
+    Route::get('/showSearch', [UserController::class, 'showSearch'])
+        ->name('showSearch');
+
+    Route::post('/search', [UserController::class, 'search'])
+        ->name('search');
     });
 

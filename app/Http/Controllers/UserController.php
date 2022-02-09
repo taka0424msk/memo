@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Post;
 use App\Http\Requests\PostRequest;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Auth;
@@ -62,22 +63,61 @@ class UserController extends Controller
         return view('myPage');
     }
 
-    /**
- * ユーザーをアプリケーションからログアウトさせる
- *
- * @param  \Illuminate\Http\Request  $request
- * @return \Illuminate\Http\Response
- */
-public function logout(Request $request)
-{
-    Auth::logout();
+        /**
+     * ユーザーをアプリケーションからログアウトさせる
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function logout(Request $request)
+    {
+        Auth::logout();
 
-    $request->session()->invalidate();
+        $request->session()->invalidate();
 
-    $request->session()->regenerateToken();
+        $request->session()->regenerateToken();
 
-    return redirect('/');
-}
+        return redirect('/');
+    }
 
+    public function showSearch()
+    {
+        return view('search.showSearch');
+    }
+
+    public function search(Request $request)
+    {
+        $users = User::paginate(20);
+
+        $posts = Post::paginate(20);
+
+        $search = $request->input('search');
+
+        $userQuery = User::query();
+
+        $postQuery = Post::query();
+
+        if ($search !== null) {
+            //全角スペースを半角に変換
+            $spaceConversion = mb_convert_kana($search, 's');
+
+            //半角スペースで区切って配列にする
+            $wordArraySearched = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
+
+            foreach ($wordArraySearched as $value) {
+                $userQuery->where('name', 'LIKE', '%'.$value.'%');
+                $postQuery->where('body', 'LIKE', '%'.$value.'%');
+            }
+            $users = $userQuery->paginate(20);
+            $posts = $postQuery->paginate(20);
+        }
+
+        return view('search.showSearch')
+            ->with([
+                'users' => $users,
+                'posts' => $posts,
+                'search' => $search
+            ]);
+    }
 
 }
